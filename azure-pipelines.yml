@@ -36,9 +36,13 @@ stages:
   displayName: Deploy to Dev
   dependsOn: Build
   variables:
+    acrsecret: Myaks
+    acrdevurl: 'k8sexamplesacr.azurecr.io'
+    replicaNo: 3
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS
+    environment: 'k8sdev.default'
     pool: 
       vmImage: ubuntu-latest
     strategy:
