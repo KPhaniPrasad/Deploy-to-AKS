@@ -36,7 +36,6 @@ stages:
   displayName: Deploy to Dev
   dependsOn: Build
   variables:
-    - 
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS
