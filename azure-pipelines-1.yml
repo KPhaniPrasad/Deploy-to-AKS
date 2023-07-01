@@ -1,0 +1,29 @@
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  imageRepo: sampleapp
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        containerRegistry: 'ACR'
+        repository: 'classicpipline'
+        command: 'build'
+        Dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
+        tags: |
+          $(tag)
+          Latest
