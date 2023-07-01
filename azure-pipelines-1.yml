@@ -22,7 +22,7 @@ stages:
       inputs:
         containerRegistry: 'ACR'
         repository: 'classicpipline'
-        command: 'build'
+        command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
         tags: |
           $(tag)
